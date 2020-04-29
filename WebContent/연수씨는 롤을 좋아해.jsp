@@ -9,3 +9,4 @@ disney's edit
 (probably u wanna say like this;)
 u know what im saying (or i mean)
 right?
+(팀장이 영어를 싫어합니다)
