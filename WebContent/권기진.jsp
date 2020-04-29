@@ -10,7 +10,7 @@
 <body>
  <fieldset>
  	<legend>안녕하세요 권기진입니다</legend>
- 	<h2>하이할루~</h2>
+ 	<h2>하이할루~~~</h2>
  </fieldset>
 </body>
 </html>
