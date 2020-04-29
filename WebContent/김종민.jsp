@@ -1,1 +1,1 @@
-i am gay
+i'm not gay
