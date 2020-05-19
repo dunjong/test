@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <title>TravelMaker</title>
 <meta charset="utf-8">
@@ -14,10 +14,12 @@
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="styles/main_styles.css?ver=2">
+<link rel="stylesheet" type="text/css" href="styles/main_styles.css?ver=5">
+<link rel="stylesheet" type="text/css" href="styles/w3.css?ver=2">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src='<c:url value="/js/jquery-3.5.0.min.js"/>'></script>
 <!-- 제이쿼리 UI용 라이브러리 임베드 -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
@@ -75,6 +77,33 @@
 		//$('.ui-datepicker-trigger > img').prop('style', 'width:40px;height:40px;vertical-align:middle;margin-top:-4px;margin-left:-10px');
 		//이미지 온리 사용시
 		$('.ui-datepicker-trigger').prop('style', 'width:40px;height:40px;vertical-align:middle;');
+		$('#skyPlace').on('keyup',function(){
+	         var value=$(this).val();
+	         var settings = {
+	               "async" : true,
+	               "crossDomain" : true,
+	               "url" : "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/KR/KRW/ko-KR/?query="+value,
+	               "method" : "GET",
+	               "headers" : {
+	                  "x-rapidapi-host" : "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+	                  "x-rapidapi-key" : "d1568953damsh47ada0f0f43312ep17030ajsn007f7d8ce31e"
+	               }
+	            }
+
+	            $.ajax(settings).done(function(response) {
+	            	
+	            	if(response.Places.length!=0){
+		               for(var i=0;i<=response.Places.length;i++){
+			               $.each(response.Places[i],function(key,value){
+			                 console.log('[%s]key:%s,value:%s',i,key,value);
+		               		})
+			               
+		               }
+		            }
+	            	
+	            });/////
+	         //$('#skyPlace').popover(options)
+	      })
 	});
 </script>
 </head>
@@ -179,7 +208,7 @@
 				</div>
 
 				<!-- Slide -->
-				<!-- <div class="owl-item">
+				 <div class="owl-item">
 					<div class="background_image" style="background-image:url(images/home_slider.jpg)"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
@@ -194,7 +223,7 @@
 					</div>
 				</div>
 
-				Slide
+				<!-- Slide -->
 				<div class="owl-item">
 					<div class="background_image" style="background-image:url(images/home_slider.jpg)"></div>
 					<div class="home_slider_content_container">
@@ -208,7 +237,7 @@
 							</div>
 						</div>
 					</div>
-				</div> -->
+				</div>
 
 			</div>
 
@@ -228,28 +257,55 @@
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<div class="home_search_container">
-						<div class="home_search_title">항공권 검색</div>
+					 <div class="home_search_container">
+						<div class="home_search_title">
+							<button class="tablink" onclick="openLink(event, 'Flight');"><i class="fa fa-plane w3-margin-right"></i>항공권 검색</button>
+							<button class="tablink" onclick="openLink(event, 'Hotel');"><i class="fa fa-bed w3-margin-right"></i>호텔 검색</button>
+						</div>
 						<div class="home_search_content">
-							<form action="#" class="home_search_form" id="home_search_form">
+							<form id="Flight" action="#" class="myLink">
 								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1" placeholder="출발지" required="required">
+									<input type="text" class="search_input search_input_1" id="skyPlace" placeholder="출발지" required="required">
 									<input type="text" class="search_input search_input_2" placeholder="도착지" required="required">
 									<input type="text" id="datepicker" class="search_input search_input_3" placeholder="가는날" required="required">
 									<input type="text" id="datepicker1" class="search_input search_input_4" placeholder="오는날" required="required">
 									<input type="text" class="search_input search_input_5" placeholder="좌석 등급 및 승객" required="required">
 								</div>
 								<div>
-									<button class="home_search_button" style="center;">항공권 검색</button>
-								</div>								
+									<button class="home_search_button" style="center;" id="flightSearch">항공권 검색</button>
+								</div>				
+							</form>
+							
+							<form id="Hotel" action="#" class="myLink">
+								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+									<input type="text" class="search_input search_input_1" id="skyPlace" placeholder="출발지" required="required">
+									<input type="text" class="search_input search_input_2" placeholder="도착지" required="required">
+									<input type="text" class="search_input search_input_5" placeholder="좌석 등급 및 승객" required="required">
+								</div>
+								<div>
+									<button class="home_search_button" style="center;">호텔 검색</button>
+								</div>				
 							</form>
 						</div>
-					</div>
+						</div> 
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<div class="modal fade" id="large-modal">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		    	<div class="modal-body">
+		    		<button class="close" data-dismiss="modal">
+		    			<span>&times;</button>
+		    		</button>
+		    		<h2>모달 컨텐츠 영역입니다</h2>
+		        	<p>안녕하세요<br/>큰 모달창입니다<br/>재미 있네요</p>
+		    	</div>
+		      	
+		    </div>
+		  </div>
+		</div>
 	<!-- Intro -->
 
 	<div class="intro">
@@ -631,6 +687,73 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
 	</footer>
 </div>
+
+<div id="popupBottom" class="popover">
+    <div class="arrow"></div>
+    <div class="popover-content">
+        <ul>
+        	<li>시드니(SYN)</li>
+        	<li><small>호주</small></li>
+        	<hr/>
+        </ul>
+    </div>
+</div>
+<script>
+// Tabs
+function openLink(evt, linkName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("myLink");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(linkName).style.display = "block";
+  evt.currentTarget.className += " w3-red";
+}
+
+// Click on the first tablink on load
+document.getElementsByClassName("tablink")[0].click();
+
+$(function(){
+	$('#flightSearch').click(function(){
+		console.log('버튼 클릭');
+		$('#large-modal').modal('show');
+		//[5초후에 자동으로 닫기]
+		/*
+		//()=>{} : 애로우펑션(화살표함수)
+		setTimeout(() => {
+			$('#small-modal').modal('hide');
+		}, 2000);
+		
+		setTimeout(function(){
+			$('#small-modal').modal('hide');
+		},5000);
+		*/
+		//[부트 스트랩 모달과 관련된 이벤트 테스트]
+		$('#large-modal').on('show.bs.modal',function(e){
+			console.log('show.bs.modal이벤트 발생:',e);    				
+		});
+		$('#large-modal').on('shown.bs.modal',function(e){
+			console.log('shown.bs.modal이벤트 발생:',e);    				
+		});
+		$('#large-modal').on('hide.bs.modal',function(e){
+			console.log('hide.bs.modal이벤트 발생:',e);  
+			
+		});
+		$('#small-modal').on('hidden.bs.modal',function(e){
+			console.log('hidden.bs.modal이벤트 발생:',e);    				
+		});
+	});
+	
+	$('#close').on('click',function(){
+		$('#large-modal').modal('hide');
+	});
+	
+});
+</script>
 
 <!-- <script src="js/jquery-3.2.1.min.js"></script> -->
 <script src="styles/bootstrap4/popper.js"></script>
