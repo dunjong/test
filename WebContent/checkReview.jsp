@@ -27,7 +27,7 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/style.css?ver=4" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: MyResume - v2.0.0
@@ -48,7 +48,7 @@
     <nav class="nav-menu">
       <ul>
         <li class="active"><a href="#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
-        <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+        <li><a href="#searchImages"><i class="bx bx-user"></i> <span>Search Images</span></a></li>
         <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
         <li><a href="#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
         <li><a href="#services"><i class="bx bx-server"></i> <span>Services</span></a></li>
@@ -59,32 +59,50 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center">
-    <div class="container" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Are you Ready for TRAVEL?</h1>
-      <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span></p>
-      <div class="social-links">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
+  <section id="hero" class="d-flex flex-column justify-content-center" style="background-color:red;">
+  <div class="jb-box">
+   <video muted autoplay loop>
+        <source src="assets/mp4/video.mp4" type="video/mp4">
+        <strong>Your browser does not support the video tag.</strong>
+    </video>
+	    <div class="jb-text">
+		    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+		      <h1>ARE YOU READY FOR TRAVEL?</h1>
+		      <p>가고 싶은 곳을 입력해보세요 ex)<span class="typed" data-typed-items="게이바, 다낭, 괌, 발리, 보라카이"></span></p>
+		      <div>
+		      	<input type="text" name="searchWord" class="form-control" style="opacity: 0.5;"/>
+		      	<button type="submit" class="btn btn-mycolor">검색</button>	
+		      </div>
+		      <div class="social-links">
+		        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+		        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+		        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+		        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+		        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+		      </div>
+		      <div>
+		      	<p style="font-size:30px;border:bold;">아직 여행할 곳을 못찾으셨다면 아래를 눌러보세요!</p>
+		      </div>
+		      <a href="#searchImages" class="btn-get-started scrollto">
+		      	<i class="bx bx-chevrons-down"></i>
+		      </a>
+		    </div>
+	    </div>
     </div>
   </section><!-- End Hero -->
 
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
+    <section id="searchImages" class="searchImages" style="background-color:yellow;">
+      <div class="container" data-aos="fade-right">
 
         <div class="section-title">
-          <h2>About</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>Search Images</h2>
+          <p>가보고싶은 곳의 사진을 넣어 자신의 여행계획을 세워보는 것은 어떨까요?</p>
         </div>
 
-        <div class="row">
+        <div class="row" style="background-color:green;">
           <div class="col-lg-4">
             <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
           </div>
