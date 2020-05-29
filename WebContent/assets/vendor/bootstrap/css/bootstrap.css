@@ -474,6 +474,10 @@ mark,
   max-width: 100%;
   height: auto;
 }
+.img-find{
+	width:30%;
+	height:30%;
+}
 
 .img-thumbnail {
   padding: 0.25rem;
