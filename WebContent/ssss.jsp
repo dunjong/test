@@ -1,31 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="ko">
+<!DOCTYPE HTML>
+<html>
 <head>
-<meta charset="utf-8">
-<title>CSS</title>
-<STYLE>
-.drag {
-	CURSOR: hand;
-	POSITION: relative
+<style>
+#div1 {
+  width: 350px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
 }
-.content{
-    outline: 2px dashed #92b0b3 ;
-    outline-offset:-10px;  
-    text-align: center;
-    transition: all .15s ease-in-out;
-    width: 300px;
-    height: 300px;
-    background-color: gray;
+</style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
 }
 
-</STYLE>
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
 
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
 </head>
 <body>
-	<p>drag and drop your image!</p>
-	<div class="content">
-	</div>
+
+<p>Drag the W3Schools image into the rectangle:</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<div>
+<img id="drag1" src="img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
+</div>
 </body>
 </html>

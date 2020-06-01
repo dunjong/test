@@ -444,7 +444,7 @@ section {
 --------------------------------------------------------------*/
 .example img{
 	width:30%;
-	height:30%;
+	height:130px;
 }
 .searchImages .content h3 {
   font-weight: 700;

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 <meta charset="utf-8">
@@ -32,7 +32,7 @@
 <link href="assets/vendor/aos/aos.css" rel="stylesheet">
 
 <!-- Template Main CSS File -->
-<link href="assets/css/style.css?ver=10" rel="stylesheet">
+<link href="assets/css/style.css?ver=11" rel="stylesheet">
 
 <!-- =======================================================
   * Template Name: MyResume - v2.0.0
@@ -40,6 +40,21 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+<script>
+ function allowDrop(ev) {
+	  ev.preventDefault();
+	}
+
+	function drag(ev) {
+	  ev.dataTransfer.setData("text", ev.target.id);
+	}
+
+	function drop(ev) {
+	  ev.preventDefault();
+	  var data = ev.dataTransfer.getData("text");
+	  ev.target.appendChild(document.getElementById(data));
+	}
+</script>
 </head>
 
 
@@ -130,13 +145,14 @@
 					<p>가보고싶은 곳의 사진을 넣어 자신의 여행계획을 세워보는 것은 어떨까요?</p>
 				</div>
 
-				<div class="row" style="background-color: green;">
-					<div class="col-lg-6" style="background-color: red;">
+				<div class="row">
+					<div class="col-lg-6">
 						<div class="col-xs-12 example">
-							<img src="assets/img/exampleImage1.jpg" class="img-find" alt="">
-							<img src="assets/img/exampleImage2.jpg" class="img-find" alt="">
-							<img src="assets/img/profile-img.jpg" class="img-find" alt="">
+							<img draggable="true" id="drag1" src="assets/img/exampleImage1.jpg" ondragstart="drag(event)" class="img-find" alt="">
+							<img draggable="true" id="drag2" src="assets/img/exampleImage2.jpg" ondragstart="drag(event)" class="img-find" alt="">
+							<img draggable="true" id="drag3" src="assets/img/profile-img.jpg" ondragstart="drag(event)" class="img-find" alt="">
 						</div>
+						<div id="div1" class="col-xs-12 picture" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:250px;height:250px;position:relative;top:10%;left:15%;border:1px green solid;"></div>
 					</div>
 					<div class="col-lg-6 pt-4 pt-lg-0"
 						style="background-color: white;">
