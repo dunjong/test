@@ -96,7 +96,7 @@
 			<div class="jb-box" style="position:absolute;left:0px;top:0px" >
 				
 				<video muted autoplay loop >
-					<source src="assets/mp4/video.mp4" type="video/mp4">
+					<source src="assets/mp4/mainpage.mp4" type="video/mp4">
 					<strong>Your browser does not support the video tag.</strong>
 				</video>
 				
